@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\KelasResource\Pages;
 use App\Filament\Resources\KelasResource\RelationManagers;
 use App\Models\Kelas;
+use App\Models\Guru;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -17,7 +18,7 @@ class KelasResource extends Resource
 {
     protected static ?string $model = Kelas::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
 
     public static function form(Form $form): Form
     {
@@ -27,7 +28,7 @@ class KelasResource extends Resource
                 ->required(),
                 Forms\Components\TextInput::make('kode_kelas')
                 ->required(),
-                Forms\Components\Select::make('id_guru')
+                Forms\Components\Select::make('guru_id')    
                 ->relationship('guru', 'nama')
                 ->searchable()
                 ->preload()
@@ -45,6 +46,10 @@ class KelasResource extends Resource
                     Forms\Components\TextInput::make('alamat')
                 ])
                 ->required(),
+                Forms\Components\Select::make('jurusan_id')
+                ->label('jurusan')
+                ->relationship('jurusan', 'nama')
+                ->required(),
             ]);
     }
 
@@ -54,7 +59,8 @@ class KelasResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('nama'),
                 Tables\Columns\TextColumn::make('kode_kelas'),
-                Tables\Columns\TextColumn::make('guru.nama')->label('Guru'),
+                Tables\Columns\TextColumn::make('guru.nama')->label('Wali Kelas'),
+                Tables\Columns\TextColumn::make('jurusan.nama')->label('Jurusan'),
 
             ])
             ->filters([

@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Jurusan extends Model
 {
+    protected $table = "jurusans";
+
     public function kelas() :HasMany
     {
         return $this->Hasmany(Kelas::class);

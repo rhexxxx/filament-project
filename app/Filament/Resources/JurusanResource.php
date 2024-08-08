@@ -17,13 +17,16 @@ class JurusanResource extends Resource
 {
     protected static ?string $model = Jurusan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('nama')
+                ->required(),
+                Forms\Components\TextInput::make('kode_jurusan')
+                ->required(),
             ]);
     }
 
@@ -31,7 +34,9 @@ class JurusanResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('nama'),
+                Tables\Columns\TextColumn::make('kode_jurusan'),
+
             ])
             ->filters([
                 //

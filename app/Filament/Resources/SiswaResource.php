@@ -16,9 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class SiswaResource extends Resource
 {
     protected static ?string $model = Siswa::class;
-
+    
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
-
     public static function form(Form $form): Form
     {
         return $form
@@ -27,8 +26,11 @@ class SiswaResource extends Resource
                 ->required(),                
                 Forms\Components\TextInput::make('nis')
                 ->required(),                
-                Forms\Components\Select::make('kode_kelas')
+                Forms\Components\Select::make('kelas_id')
                 ->relationship('kelas', 'nama')
+                ->required(),
+                Forms\Components\Select::make('jurusan_id')
+                ->relationship('jurusan', 'nama')
                 ->required(),
                 Forms\Components\TextInput::make('email')
                 ->required()
@@ -43,11 +45,9 @@ class SiswaResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('nama'),
                 Tables\Columns\TextColumn::make('nis'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('alamat'),
-                Tables\Columns\TextColumn::make('no_telp'),
+                Tables\Columns\TextColumn::make('nama'),
+                Tables\Columns\TextColumn::make('jurusan.nama')->label('Jurusan'),
                 Tables\Columns\TextColumn::make('kelas.nama')->label('Kelas'),
             ])
             ->filters([
@@ -67,7 +67,7 @@ class SiswaResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            RelationManagers\TreatmentsRelationManager::class,
         ];
     }
 
