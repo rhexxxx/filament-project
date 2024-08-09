@@ -14,7 +14,8 @@ class Siswa extends Model
         return $this->BelongsTo(Kelas::class);
     }
 
-    public function jurusan(): BelongsTo{
+    public function jurusan() :BelongsTo
+    {
         return $this->BelongsTo(Jurusan::class);
     }
     use HasFactory;
