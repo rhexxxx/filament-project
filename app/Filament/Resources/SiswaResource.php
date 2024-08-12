@@ -3,7 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\SiswaResource\Pages;
-use App\Filament\Resources\SiswaResource\RelationManagers;
+use App\Filament\Resources\KelasResource\RelationManagers\SiswaRelationManager;
 use App\Models\Siswa;
 use Filament\Forms;
 use Filament\Forms\Form;

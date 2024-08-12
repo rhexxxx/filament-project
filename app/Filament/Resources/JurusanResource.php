@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\JurusanResource\Pages;
 use App\Filament\Resources\JurusanResource\RelationManagers;
+use App\Filament\Resources\JurusanResource\RelationManagers\KelasRelationManager;
 use App\Models\Jurusan;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -54,7 +55,7 @@ class JurusanResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            KelasRelationManager::class
         ];
     }
 
