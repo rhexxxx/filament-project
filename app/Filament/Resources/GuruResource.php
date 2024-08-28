@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class GuruResource extends Resource
 {
     protected static ?string $model = Guru::class;
+    protected static ?string $navigationLabel = 'Guru';
+
 
     protected static ?string $navigationIcon = 'heroicon-o-user-circle';
 

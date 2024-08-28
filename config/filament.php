@@ -83,6 +83,9 @@ return [
     | Livewire's standard 200ms delay.
     |
     */
+    'app' => [
+        'name' => 'SMKN 1 Denpasar',
+    ],
 
     'livewire_loading_delay' => 'default',
 

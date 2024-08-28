@@ -18,6 +18,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SiswaResource extends Resource
 {
+    protected static ?string $navigationLabel = 'Siswa';
+
+
     protected static ?string $model = Siswa::class;
     
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
@@ -44,12 +47,6 @@ class SiswaResource extends Resource
                     return Kelas::all()->pluck('nama', 'id');
                 })
                 ->required(),
-                // Forms\Components\Select::make('kelas_id')
-                // ->relationship('kelas', 'nama')
-                // ->required(),
-                // Forms\Components\Select::make('jurusan_id')
-                // ->relationship('jurusan', 'nama')
-                // ->required(),
                 Forms\Components\TextInput::make('email')
                 ->required()
                 ->email(),                
@@ -74,6 +71,7 @@ class SiswaResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -94,6 +92,7 @@ class SiswaResource extends Resource
             'index' => Pages\ListSiswas::route('/'),
             'create' => Pages\CreateSiswa::route('/create'),
             'edit' => Pages\EditSiswa::route('/{record}/edit'),
+            // 'view' => Pages\ViewSiswa::route('/{record}'),
         ];
     }
 }

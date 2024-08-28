@@ -23,11 +23,13 @@ class AdminPanelProvider extends PanelProvider
     public function panel(Panel $panel): Panel
     {
         return $panel
+            ->brandName('Student Manager')
             ->default()
             ->id('admin')
             ->path('admin')
             ->login()
             ->colors([
+                'danger' => Color::Rose,
                 'primary' => Color::Amber,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')

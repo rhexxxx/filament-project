@@ -9,4 +9,8 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateJurusan extends CreateRecord
 {
     protected static string $resource = JurusanResource::class;
+    protected function getCreatedNotificationTitle(): ?string
+    {
+        return 'Jurusan Created';
+    }
 }
