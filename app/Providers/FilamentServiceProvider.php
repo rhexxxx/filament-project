@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Filament\Facades\Filament;
+use Filament\Pages\Dashboard;
 
 class FilamentServiceProvider extends ServiceProvider
 {

@@ -33,7 +33,8 @@ class KelasResource extends Resource
                 ->required(),
                 Forms\Components\TextInput::make('kode_kelas')
                 ->required(),
-                Forms\Components\Select::make('guru_id')    
+                Forms\Components\Select::make('guru_id')
+                ->label('Wali Kelas')    
                 ->relationship('guru', 'nama')
                 ->searchable()
                 ->preload()
